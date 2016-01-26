@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Recursion {
+
+	public static void main(String[] args) {
+
+		System.out.println("What is the number you want to find?");
+		Scanner keyboard = new Scanner(System.in);
+		long number = keyboard.nextLong();
+		long factorial = factorial(number);
+		System.out.println(factorial);
+		
+		//Alternative Factorial method, in this case recursive is slower 
+		System.out.println("What is the number you want to find?");
+		long numberOne=keyboard.nextLong();
+		long factorialOne=1;
+		for (int index=1; index<=numberOne;index++)
+		{
+			factorialOne*=index;
+		}
+		System.out.println(factorialOne);
+	}
+
+	//recursive factorial 
+	private static long factorial(long number) {
+		{
+			if (number <= 1)
+				return 1;
+			return number * factorial(number - 1);
+		}
+	}
+
+}
