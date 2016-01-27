@@ -1,0 +1,33 @@
+
+public class FloodFillRecursion {
+	public static void main(String[] args) {
+		int size = markIsland(1, 1);
+		System.out.println(size);
+	}
+
+	public static int markIsland(int row, int column) {
+
+		// Assumes map is a 2d Array consistent of 'X' and "-"
+		char map[][] = { { '-', 'X', '-', 'X', '-', '-', '-', '-', '-', '-', '-', '-' },
+				{ '-', 'X', 'X', 'X', 'X', '-', '-', '-', 'X', '-', '-', '-' },
+				{ '-', 'X', '-', '-', '-', 'X', '-', '-', '-', '-', 'X', 'X' },
+				{ '-', 'X', '-', '-', '-', '-', '-', 'X', '-', '-', '-', '-' },
+				{ '-', 'X', '-', '-', 'X', 'X', '-', 'X', 'X', 'X', 'X', '-' },
+				{ '-', 'X', '-', '-', '-', '-', '-', '-', '-', 'X', 'X', 'X' } };
+		// Checks first if index is searchable, than whether or no not index is
+		// land
+		// Terminate requirement
+		if (row < 0 || row >= map.length || column < 0 || column >= map[0].length || map[row][column] != 'X') {
+			// If the square is water than we dont add this to size
+			return 0;
+		} else {
+			// Mark this square as counted ('x' is the fill colour)
+			map[row][column] = 'x';
+			// Recursive Statement-> Checks above, across, below, and then calls
+			// method until terminates
+			return (1 + markIsland(row + 1, column) + markIsland(row - 1, column) + markIsland(row, column + 1)
+					+ markIsland(row, column - 1));
+		}
+	}
+
+}
